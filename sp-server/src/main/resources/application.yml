@@ -1,0 +1,22 @@
+server:
+  port: 8090
+
+logging.level:
+  org.springframework.security: TRACE
+
+spring:
+  security:
+    filter:
+      dispatcher-types: async, error, request, forward
+    saml2:
+      relyingparty:
+        registration:
+          single:
+            entity-id: "{baseUrl}/saml/metadata"
+            singlelogout:
+              binding: POST
+              url: "{baseUrl}/saml/logout"
+              responseUrl: "{baseUrl}/saml/SingleLogout"
+            acs:
+              location: "{baseUrl}/saml/SSO"
+            assertingparty.metadata-uri: http://localhost:8080/metadata
