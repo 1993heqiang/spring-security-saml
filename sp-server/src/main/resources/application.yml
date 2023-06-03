@@ -13,6 +13,9 @@ spring:
         registration:
           single:
             entity-id: "{baseUrl}/saml/metadata"
+            signing.credentials:
+              - private-key-location: classpath:credentials/rp-private.key
+                certificate-location: classpath:credentials/rp-certificate.crt
             singlelogout:
               binding: POST
               url: "{baseUrl}/saml/logout"
