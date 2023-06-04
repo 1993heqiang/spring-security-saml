@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.component;
+package com.example.sp.component;
 
 import java.io.IOException;
 import java.util.*;
@@ -33,7 +33,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.example.config.SecurityConfiguration.DEFAULT_REGISTRATION_ID;
+import static com.example.sp.config.SecurityConfiguration.DEFAULT_REGISTRATION_ID;
 
 @Component
 @Order(-101) // To run before FilterChainProxy

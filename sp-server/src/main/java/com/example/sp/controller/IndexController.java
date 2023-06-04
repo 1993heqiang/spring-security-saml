@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.controller;
+package com.example.sp.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.saml2.provider.service.authentication.Saml2AuthenticatedPrincipal;

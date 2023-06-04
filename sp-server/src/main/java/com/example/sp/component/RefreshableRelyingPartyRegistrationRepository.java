@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.component;
+package com.example.sp.component;
 
 import org.springframework.boot.autoconfigure.security.saml2.Saml2RelyingPartyProperties;
 import org.springframework.core.io.Resource;

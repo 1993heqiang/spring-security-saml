@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.config;
+package com.example.sp.config;
 
+import com.example.sp.component.DelegateRelyingPartyRegistrationResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

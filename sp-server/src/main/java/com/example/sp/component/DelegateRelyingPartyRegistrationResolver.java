@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.sp.component;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistration;
@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.example.config.SecurityConfiguration.DEFAULT_REGISTRATION_ID;
+import static com.example.sp.config.SecurityConfiguration.DEFAULT_REGISTRATION_ID;
 
 public final class DelegateRelyingPartyRegistrationResolver implements Converter<HttpServletRequest, RelyingPartyRegistration>, RelyingPartyRegistrationResolver {
     private final RelyingPartyRegistrationResolver origin;
