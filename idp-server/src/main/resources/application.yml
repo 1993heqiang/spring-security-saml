@@ -1,0 +1,8 @@
+server:
+  port: 9090
+
+idp:
+  base_url: http://localhost:9090
+
+sp:
+  base_url: http://localhost:8090

@@ -45,6 +45,8 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPrivateKey;
 
+import static com.example.sp.util.OpenSAMLUtils.x509Certificate;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -58,6 +60,7 @@ public class SecurityConfiguration {
         // @formatter:off
 		http
 			.authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/sp/consumer").permitAll()
 				.requestMatchers("/error").permitAll()
 				.anyRequest().authenticated()
 			)
@@ -113,14 +116,6 @@ public class SecurityConfiguration {
                 )
                 .build();
         return new InMemoryRelyingPartyRegistrationRepository(registration);
-    }
-
-    X509Certificate x509Certificate(File location) {
-        try (InputStream source = Files.newInputStream(location.toPath())) {
-            return (X509Certificate) CertificateFactory.getInstance("X.509").generateCertificate(source);
-        } catch (CertificateException | IOException ex) {
-            throw new IllegalArgumentException(ex);
-        }
     }
 
 }
