@@ -22,5 +22,5 @@ spring:
               responseUrl: "{baseUrl}/saml/SingleLogout"
             acs:
               location: "{baseUrl}/saml/SSO"
-            assertingparty.metadata-uri: http://localhost:8080/metadata
+            assertingparty.metadata-uri: http://localhost:9090/metadata
 

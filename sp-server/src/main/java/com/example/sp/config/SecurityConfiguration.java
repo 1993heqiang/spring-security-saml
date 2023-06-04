@@ -24,6 +24,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.saml2.core.Saml2X509Credential;
 import org.springframework.security.saml2.provider.service.metadata.OpenSamlMetadataResolver;
 import org.springframework.security.saml2.provider.service.registration.InMemoryRelyingPartyRegistrationRepository;
@@ -53,6 +54,14 @@ public class SecurityConfiguration {
     public static final String DEFAULT_REGISTRATION_ID = "single";
 
     @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring()
+                // Spring Security should completely ignore URLs starting with /resources/
+                .requestMatchers("/sp/consumer")
+                .requestMatchers("/actuator/**");
+    }
+
+    @Bean
     SecurityFilterChain securityFilterChain(
             HttpSecurity http, RelyingPartyRegistrationResolver delegateRelyingPartyRegistrationResolver) throws Exception {
         Saml2MetadataFilter metadataFilter = new Saml2MetadataFilter(delegateRelyingPartyRegistrationResolver,
@@ -60,7 +69,6 @@ public class SecurityConfiguration {
         // @formatter:off
 		http
 			.authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/sp/consumer").permitAll()
 				.requestMatchers("/error").permitAll()
 				.anyRequest().authenticated()
 			)
