@@ -91,6 +91,8 @@ public class SecurityConfiguration {
 
     @Bean
     Saml2AuthenticationTokenConverter authentication(RelyingPartyRegistrationResolver registrations) {
+        // todo 在这里进行处理, 重写Saml2AuthenticationTokenConverter#convert方法,当有SAMLart是,先获取SAMLResponse,
+        //  然后还原SAMLResponse
         return new Saml2AuthenticationTokenConverter(registrations);
     }
 
